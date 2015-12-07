@@ -12,7 +12,7 @@
 		</Grid.ColumnDefinitions>
 		<DockPanel Name="leftPanel">
 		</DockPanel>
-		<GridSplitter Width="4" HorizontalAlignment="Right" VerticalAlignment="Stretch" ResizeBehavior="CurrentAndNext">
+		<GridSplitter Width="4" HorizontalAlignment="Right" VerticalAlignment="Stretch" ResizeBehavior="CurrentAndNext"/>
 		<DockPanel Grid.Column="1" Name="CentralPanel">
 		</DockPanel>
 	</Grid>

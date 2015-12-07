@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 5.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hd-editor", "hd-editor.csproj", "{481AC8C9-C9FA-413A-8CE0-E9F5682F0A40}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{481AC8C9-C9FA-413A-8CE0-E9F5682F0A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{481AC8C9-C9FA-413A-8CE0-E9F5682F0A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{481AC8C9-C9FA-413A-8CE0-E9F5682F0A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{481AC8C9-C9FA-413A-8CE0-E9F5682F0A40}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

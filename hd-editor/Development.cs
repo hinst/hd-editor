@@ -27,6 +27,19 @@ namespace hd_editor
 			this.files = fileList;
 		}
 		
+		public SourceFile getSourceFileByPath(string path)
+		{
+			SourceFile result = null;
+			foreach (var file in files)
+			{
+				if (String.Compare(file.path, path, StringComparison.OrdinalIgnoreCase) == 0)
+				{
+					result = file;
+				}
+			}
+			return result;
+		}
+		
 	}
 	
 }

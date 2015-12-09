@@ -17,16 +17,18 @@ namespace hd_editor
 		{
 			canvas.Children.Clear();
 			var textBlock = createTextBlock();
-			textBlock.Text = "heh";
+			textBlock.Text = "bubuntu";
 			canvas.Children.Add(textBlock);
 		}
 		
 		public TextBlock createTextBlock()
 		{
 			var result = new TextBlock();
-			result.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "UbuntuMono-R.ttf");
+			result.FontFamily = codeFont;
 			return result;
 		}
+		
+		public static FontFamily codeFont = new FontFamily(new Uri("pack://application:,,,/"), "UbuntuMono-R.ttf"); 
 		
 	}
 	

@@ -25,7 +25,7 @@
 		</DockPanel>
 		<GridSplitter Width="4" HorizontalAlignment="Right" VerticalAlignment="Stretch" ResizeBehavior="CurrentAndNext"/>
 		<DockPanel Grid.Column="1" Name="centralPanel">
-			<Canvas Name="codeCanvas"/>
+			<Canvas Name="codeCanvas" Margin="2"/>
 		</DockPanel>
 	</Grid>
 </Window>

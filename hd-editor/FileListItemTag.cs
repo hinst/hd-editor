@@ -7,7 +7,7 @@ namespace hd_editor
 	public class FileListItemTag
 	{
 	
-		public SourceFile sourceFile;
+		public string path;
 		
 	}
 	

@@ -18,6 +18,7 @@ namespace hd_editor
 	{
 	
 		public Development development = new Development();
+		public CodeDrawer codeDrawer = new CodeDrawer();
 	
 		public Window1()
 		{
@@ -40,7 +41,7 @@ namespace hd_editor
 				var item = new ListBoxItem();
 				item.Content = file.path;
 				var itemTag = new FileListItemTag();
-				itemTag.sourceFile = file;
+				itemTag.path = file.path;
 				item.Tag = itemTag;
 				fileList.Items.Add(item);
 			}
@@ -59,7 +60,13 @@ namespace hd_editor
 			{
 				var item = (ListBoxItem)fileList.Items[fileList.SelectedIndex];
 				var tagItem = (FileListItemTag)item.Tag;
+				switchToFile(tagItem.path);
 			}
+		}
+		
+		void switchToFile(string path)
+		{
+			codeDrawer.draw(codeCanvas);
 		}
 		
 	}

@@ -20,9 +20,9 @@ namespace hd_editor
 			var fileList = new List<SourceFile>(files.Length);
 			foreach (var file	in files)
 			{
-				var repoFile = new RepositoryFile();
-				repoFile.filePath = file;
-				if (repoFile.isRepoFile)
+				var repoFile = new SourceFile();
+				repoFile.path = file;
+				if (repoFile.isSourceFile)
 				{
 					fileList.Add(repoFile);
 				}

@@ -6,6 +6,14 @@ namespace hd_editor
 	public class SourceFile
 	{
 	
+		public bool isSourceFile
+		{
+			get
+			{
+				return path.EndsWith(".pas", StringComparison.OrdinalIgnoreCase);
+			}
+		}
+	
 		public SourceFile()
 		{
 			

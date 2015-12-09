@@ -23,6 +23,7 @@ namespace hd_editor
 		public Window1()
 		{
 			InitializeComponent();
+			codeDrawer.prepare();
 		}
 		
 		void Window_KeyDown(object sender, KeyEventArgs e)
@@ -66,6 +67,9 @@ namespace hd_editor
 		
 		void switchToFile(string path)
 		{
+			var sourceFile = development.getSourceFileByPath(path);
+			sourceFile.load();
+			codeDrawer.lines = sourceFile.lines;
 			codeDrawer.draw(codeCanvas);
 		}
 		

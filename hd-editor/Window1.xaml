@@ -12,7 +12,16 @@
 			<ColumnDefinition Width="200"/>
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
-		<DockPanel Name="leftPanel">
+		<DockPanel Name="leftPanel" Margin="1,1,5,1">
+			<Grid Name="leftGrid">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<TextBox Name="fileListFilterTextBox" Grid.Row="0" VerticalAlignment="Top"></TextBox>
+				<ListBox Name="fileList" Grid.Row="1" VerticalAlignment="Stretch" >
+				</ListBox>
+			</Grid>
 		</DockPanel>
 		<GridSplitter Width="4" HorizontalAlignment="Right" VerticalAlignment="Stretch" ResizeBehavior="CurrentAndNext"/>
 		<DockPanel Grid.Column="1" Name="centralPanel">

@@ -28,9 +28,26 @@ namespace hd_editor
 		{
 			if (e.Key == Key.F5)
 			{
-				development.files.scan();
-				Console.WriteLine(development.files.files.Length);
+				refreshDevelopment();
 			}
+		}
+		
+		void loadFileList()
+		{
+			fileList.Items.Clear();
+			foreach (var file in development.files)
+			{
+				var item = new ListBoxItem();
+				item.Content = file.path;
+				fileList.Items.Add(item);
+			}
+		}
+		
+		void refreshDevelopment()
+		{
+			development.scan();
+			Console.WriteLine(development.files.Count);
+			loadFileList();
 		}
 		
 	}

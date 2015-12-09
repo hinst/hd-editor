@@ -16,9 +16,23 @@ namespace hd_editor
 	/// </summary>
 	public partial class Window1 : Window
 	{
+	
+		public Development development = new Development();
+	
 		public Window1()
 		{
 			InitializeComponent();
 		}
+		
+		void Window_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.F5)
+			{
+				development.files.scan();
+				Console.WriteLine(development.files.files.Length);
+			}
+		}
+		
 	}
+	
 }

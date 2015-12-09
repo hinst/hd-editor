@@ -6,10 +6,20 @@ using System.Configuration;
 
 namespace hd_editor
 {
-	/// <summary>
-	/// Interaction logic for App.xaml
-	/// </summary>
+
 	public partial class App : Application
 	{
+	
+		void Application_Startup(object sender, StartupEventArgs e)
+		{
+			var window = new Window1();
+			if (e.Args.Length > 0)
+			{
+				window.development.files.path = e.Args[0];
+			}
+			window.Show();
+		}
+		
 	}
+	
 }

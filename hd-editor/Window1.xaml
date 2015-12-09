@@ -4,7 +4,9 @@
 	Title="hd_editor"
 	Height="300"
 	Width="300"
-	RenderTransformOrigin="0.5,0.54">
+	RenderTransformOrigin="0.5,0.54"
+	KeyDown="Window_KeyDown"
+>
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="200"/>

@@ -19,12 +19,13 @@
 					<RowDefinition Height="*"/>
 				</Grid.RowDefinitions>
 				<TextBox Name="fileListFilterTextBox" Grid.Row="0" VerticalAlignment="Top"></TextBox>
-				<ListBox Name="fileList" Grid.Row="1" VerticalAlignment="Stretch" >
+				<ListBox Name="fileList" Grid.Row="1" VerticalAlignment="Stretch" MouseDoubleClick="FileList_MouseDoubleClick">
 				</ListBox>
 			</Grid>
 		</DockPanel>
 		<GridSplitter Width="4" HorizontalAlignment="Right" VerticalAlignment="Stretch" ResizeBehavior="CurrentAndNext"/>
 		<DockPanel Grid.Column="1" Name="centralPanel">
+			<Canvas Name="codeCanvas"/>
 		</DockPanel>
 	</Grid>
 </Window>

@@ -39,6 +39,9 @@ namespace hd_editor
 			{
 				var item = new ListBoxItem();
 				item.Content = file.path;
+				var itemTag = new FileListItemTag();
+				itemTag.sourceFile = file;
+				item.Tag = itemTag;
 				fileList.Items.Add(item);
 			}
 		}
@@ -48,6 +51,15 @@ namespace hd_editor
 			development.scan();
 			Console.WriteLine(development.files.Count);
 			loadFileList();
+		}
+		
+		void FileList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+		{
+			if (fileList.SelectedIndex >= 0)
+			{
+				var item = (ListBoxItem)fileList.Items[fileList.SelectedIndex];
+				var tagItem = (FileListItemTag)item.Tag;
+			}
 		}
 		
 	}

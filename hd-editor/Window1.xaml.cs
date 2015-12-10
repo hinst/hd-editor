@@ -1,4 +1,4 @@
-﻿
+﻿using NLog;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,14 +11,13 @@ using System.Windows.Media;
 
 namespace hd_editor
 {
-	/// <summary>
-	/// Interaction logic for Window1.xaml
-	/// </summary>
+
 	public partial class Window1 : Window
 	{
 	
 		public Development development = new Development();
 		public CodeDrawer codeDrawer = new CodeDrawer();
+		Logger log = LogManager.GetCurrentClassLogger();
 	
 		public Window1()
 		{
@@ -51,7 +50,7 @@ namespace hd_editor
 		void refreshDevelopment()
 		{
 			development.scan();
-			Console.WriteLine(development.files.Count);
+			log.Debug("Number of development files found: " + development.files.Count);
 			loadFileList();
 		}
 		

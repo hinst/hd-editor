@@ -32,7 +32,7 @@ namespace hd_editor
 			SourceFile result = null;
 			foreach (var file in files)
 			{
-				if (String.Compare(file.path, path, StringComparison.OrdinalIgnoreCase) == 0)
+				if (String.Equals(file.path, path, StringComparison.OrdinalIgnoreCase))
 				{
 					result = file;
 				}

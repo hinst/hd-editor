@@ -22,7 +22,7 @@ namespace hd_editor
 		}
 		
 		public string path;
-		public string[] lines;
+		public List<string> lines;
 		public CharacterStyle[,] markup;
 		
 		public void load()
@@ -31,7 +31,7 @@ namespace hd_editor
 			lines = getLines(content);
 		}
 		
-		public static string[] getLines(string text)
+		public static List<string> getLines(string text)
 		{
 			var lines = new List<string>();
 			var line = new StringBuilder();
@@ -48,7 +48,7 @@ namespace hd_editor
 					line.Append(character);
 				}
 			}
-			return lines.ToArray();
+			return lines;
 		}
 		
 	}

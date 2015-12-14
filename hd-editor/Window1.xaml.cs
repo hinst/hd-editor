@@ -68,8 +68,8 @@ namespace hd_editor
 		{
 			var sourceFile = development.getSourceFileByPath(path);
 			sourceFile.load();
-			codeDrawer.lines = sourceFile.lines;
-			codeDrawer.draw(codeCanvas);
+			codeDrawer.sourceFile = sourceFile;
+			codeDrawer.draw();
 		}
 		
 	}

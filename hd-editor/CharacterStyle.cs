@@ -9,6 +9,7 @@ namespace hd_editor
 	
 		public bool bold;
 		public Color color;
+		public int index;
 		
 	}
 	

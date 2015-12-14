@@ -10,13 +10,13 @@ namespace hd_editor
 
 	public class CodeDrawer
 	{
-	
-		public List<string> lines;
-		public CharacterStyle makrup;
+
+		public SourceFile sourceFile;
 		public int selectedLine;
 		public int selectedCharacter;
 		public int characterWidth;
 		public int characterHeight;
+		public Canvas canvas;
 		Logger log = LogManager.GetCurrentClassLogger();
 	
 		public void prepare()
@@ -41,21 +41,32 @@ namespace hd_editor
 			}
 		}
 		
-		public void draw(Canvas canvas)
+		public void draw()
 		{
 			canvas.Children.Clear();
 			var lineIndex = selectedLine;
 			int top = 0;
-			log.Debug("" + canvas.ActualHeight + " " + lines.Count);
-			while (top < canvas.ActualHeight && lineIndex < lines.Count)
+			log.Debug("" + canvas.ActualHeight + " " + sourceFile.lines.Count);
+			while (top < canvas.ActualHeight && lineIndex < sourceFile.lines.Count)
 			{
 				var textBlock = createTextBlock();
-				textBlock.Text = lines[lineIndex];
+				textBlock.Text = sourceFile.lines[lineIndex];
 				top += characterHeight;
 				textBlock.setTop(top);
 				canvas.Children.Add(textBlock);
 				lineIndex++;
 			}
+		}
+		
+		public TextBlock[] drawLine(int lineIndex)
+		{
+			var textBlocks = new List<TextBlock>();
+			var x = 0;
+			while (x + characterWidth < canvas.ActualWidth)
+			{
+				
+			}
+			return textBlocks.ToArray();
 		}
 		
 		public TextBlock createTextBlock()

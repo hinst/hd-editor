@@ -16,7 +16,10 @@ namespace hd_editor
 		public int selectedCharacter;
 		public int characterWidth;
 		public int characterHeight;
+		public int scrollX;
+		public int scrollY;
 		public Canvas canvas;
+		public static FontFamily codeFont = new FontFamily(new Uri("pack://application:,,,/"), "./#Ubuntu Mono");		
 		Logger log = LogManager.GetCurrentClassLogger();
 	
 		public void prepare()
@@ -44,32 +47,34 @@ namespace hd_editor
 		public void draw()
 		{
 			canvas.Children.Clear();
-			var lineIndex = selectedLine;
-			int top = 0;
-			log.Debug("" + canvas.ActualHeight + " " + sourceFile.lines.Count);
-			while (top < canvas.ActualHeight && lineIndex < sourceFile.lines.Count)
+			if (sourceFile != null)
 			{
-				var textBlock = createTextBlock();
-				textBlock.Text = sourceFile.lines[lineIndex];
-				top += characterHeight;
-				textBlock.setTop(top);
-				canvas.Children.Add(textBlock);
-				lineIndex++;
+				var lineIndex = scrollY;
+				int topPixel = 0;
+				while (topPixel < canvas.ActualHeight && lineIndex < sourceFile.lines.Count)
+				{
+					var textBlock = drawLine(lineIndex);
+					textBlock.setTop(topPixel);
+					canvas.Children.Add(textBlock);
+					topPixel += characterHeight;
+					lineIndex++;
+				}
 			}
 		}
 		
-		public TextBlock[] drawLine(int lineIndex)
+		TextBlock drawLine(int lineIndex)
 		{
-			var textBlocks = new List<TextBlock>();
-			var x = 0;
-			while (x + characterWidth < canvas.ActualWidth)
+			var textBlock = createTextBlock();
+			var text = sourceFile.lines[lineIndex];
+			if (scrollX > 0)
 			{
-				
+				text = text.Substring(scrollX);
 			}
-			return textBlocks.ToArray();
+			textBlock.Text = text;
+			return textBlock;
 		}
 		
-		public TextBlock createTextBlock()
+		TextBlock createTextBlock()
 		{
 			var result = new TextBlock();
 			result.FontFamily = codeFont;
@@ -78,8 +83,16 @@ namespace hd_editor
 			return result;
 		}
 		
-		public static FontFamily codeFont = new FontFamily(new Uri("pack://application:,,,/"), "./#Ubuntu Mono");
-
+		public void scrollByPixels(int delta)
+		{
+			delta = delta / characterHeight;
+			delta = (-1) * delta;
+			scrollY += delta;
+			if (scrollY < 0)
+				scrollY = 0;
+			log.Debug("scrollY=" + scrollY);
+		}
+		
 	}
 	
 }

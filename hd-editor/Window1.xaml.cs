@@ -22,6 +22,7 @@ namespace hd_editor
 		public Window1()
 		{
 			InitializeComponent();
+			codeDrawer.canvas = codeCanvas;
 			codeDrawer.prepare();
 		}
 		
@@ -69,6 +70,11 @@ namespace hd_editor
 			var sourceFile = development.getSourceFileByPath(path);
 			sourceFile.load();
 			codeDrawer.sourceFile = sourceFile;
+			codeDrawer.draw();
+		}
+		void CodeCanvas_MouseWheel(object sender, MouseWheelEventArgs e)
+		{
+			codeDrawer.scrollByPixels(e.Delta);
 			codeDrawer.draw();
 		}
 		

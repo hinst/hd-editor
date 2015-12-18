@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Window
-	x:Class="hd_editor.Window1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="hd_editor.Window1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	Title="hd_editor"
 	Height="300"
 	Width="300"
@@ -19,13 +20,17 @@
 					<RowDefinition Height="*"/>
 				</Grid.RowDefinitions>
 				<TextBox Name="fileListFilterTextBox" Grid.Row="0" VerticalAlignment="Top"></TextBox>
-				<ListBox Name="fileList" Grid.Row="1" VerticalAlignment="Stretch" MouseDoubleClick="FileList_MouseDoubleClick">
+				<ListBox Name="fileList" Grid.Row="1" VerticalAlignment="Stretch" 
+					MouseDoubleClick="FileList_MouseDoubleClick">
 				</ListBox>
 			</Grid>
 		</DockPanel>
-		<GridSplitter Width="4" HorizontalAlignment="Right" VerticalAlignment="Stretch" ResizeBehavior="CurrentAndNext"/>
-		<DockPanel Grid.Column="1" Name="centralPanel">
-			<Canvas Name="codeCanvas" Margin="2" MouseWheel="CodeCanvas_MouseWheel"/>
+		<GridSplitter Width="4" HorizontalAlignment="Right" VerticalAlignment="Stretch" 
+			ResizeBehavior="CurrentAndNext"/>
+		<DockPanel Grid.Column="1" Name="centralPanel" >
+			<Canvas Name="codeCanvas" Margin="2" 
+				Background="Transparent"
+				MouseWheel="CodeCanvas_MouseWheel"/>
 		</DockPanel>
 	</Grid>
 </Window>

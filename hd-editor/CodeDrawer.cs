@@ -11,7 +11,7 @@ namespace hd_editor
 	public class CodeDrawer
 	{
 
-		public SourceFile sourceFile;
+		SourceFile sourceFile;
 		public int selectedLine;
 		public int selectedCharacter;
 		public int characterWidth;
@@ -90,7 +90,19 @@ namespace hd_editor
 			scrollY += delta;
 			if (scrollY < 0)
 				scrollY = 0;
+			if (sourceFile != null)
+			{
+				if (sourceFile.lines.Count <= scrollY)
+				{
+					scrollY = sourceFile.lines.Count;
+				}
+			}
 			log.Debug("scrollY=" + scrollY);
+		}
+		
+		public void changeSourceFile(SourceFile sourceFile)
+		{
+			this.sourceFile = sourceFile;
 		}
 		
 	}

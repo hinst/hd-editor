@@ -69,7 +69,7 @@ namespace hd_editor
 		{
 			var sourceFile = development.getSourceFileByPath(path);
 			sourceFile.load();
-			codeDrawer.sourceFile = sourceFile;
+			codeDrawer.changeSourceFile(sourceFile);
 			codeDrawer.draw();
 		}
 		void CodeCanvas_MouseWheel(object sender, MouseWheelEventArgs e)

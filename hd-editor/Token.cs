@@ -9,6 +9,9 @@ namespace hd_editor
 	
 		public enum Type
 		{
+			unit,
+			program,
+			library,
 			begin,
 			end,
 			space,
@@ -27,7 +30,10 @@ namespace hd_editor
 			assignSign,
 			lessThan,
 			greaterThan,
-			comment
+			comment,
+			includeFile,
+			define,
+			undefine,
 		}
 		
 		Type type;

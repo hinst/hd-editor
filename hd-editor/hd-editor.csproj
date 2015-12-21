@@ -86,7 +86,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="CanvasHelper.cs" />
-    <Compile Include="CharacterStyle.cs" />
+    <Compile Include="TokenStyle.cs" />
     <Compile Include="CodeDrawer.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
@@ -97,6 +97,7 @@
     <Compile Include="Properties\WPFAssemblyInfo.cs" />
     <Compile Include="SourceFile.cs" />
     <Compile Include="StringArrayHelper.cs" />
+    <Compile Include="Token.cs" />
     <Compile Include="Window1.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>Window1.xaml</DependentUpon>

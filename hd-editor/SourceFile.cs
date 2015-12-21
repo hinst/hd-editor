@@ -23,7 +23,7 @@ namespace hd_editor
 		
 		public string path;
 		public List<string> lines;
-		public CharacterStyle[,] markup;
+		public Token[] tokens;
 		
 		public void load()
 		{

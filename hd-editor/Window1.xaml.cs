@@ -67,6 +67,7 @@ namespace hd_editor
 			codeDrawer.changeSourceFile(sourceFile);
 			codeDrawer.draw();
 		}
+		
 		void CodeCanvas_MouseWheel(object sender, MouseWheelEventArgs e)
 		{
 			codeDrawer.scrollByPixels(e.Delta);

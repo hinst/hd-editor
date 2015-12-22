@@ -87,7 +87,7 @@
     </Compile>
     <Compile Include="CanvasHelper.cs" />
     <Compile Include="PascalLang.cs" />
-    <Compile Include="PascalTokenizer.cs" />
+    <Compile Include="Tokenizer.cs" />
     <Compile Include="TokenStyle.cs" />
     <Compile Include="CodeDrawer.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

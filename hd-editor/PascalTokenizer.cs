@@ -1,23 +1,49 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace hd_editor
 {
 
-	public class PascalTokenizer
+	class PascalTokenizer
 	{
 	
 		List<Token> tokens;
-		string filePath
+		string filePath;
 		string text;
 		int position;
 		
-		public void run()
+		public void tokenize()
 		{
 			position = 0;
+			if (tokens == null)
+			{
+				tokens = new List<Token>();
+			}
 			while (position < text.Length)
 			{
-				
+				var currentChar = text[position];
+				if (PascalLang.isIdentifierStartChar(currentChar))
+				{
+					grabIdentifier();
+				}
+			}
+		}
+		
+		void grabIdentifier()
+		{
+			var identifierText = new StringBuilder();
+			while (position < text.Length)
+			{
+				var currentChar = text[position];
+				if (PascalLang.isIdentifierChar(currentChar))
+				{
+					identifierText.Append(currentChar);
+				}
+				else
+				{
+					break;
+				}
 			}
 		}
 

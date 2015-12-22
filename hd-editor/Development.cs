@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace hd_editor
 {
 
-	public class Development
+	class Development
 	{
 	
 		public string path;

@@ -4,7 +4,7 @@ using System;
 namespace hd_editor
 {
 
-	public struct Token
+	struct Token
 	{
 	
 		public enum Type
@@ -36,9 +36,9 @@ namespace hd_editor
 			undefine,
 		}
 		
-		Type type;
-		string content;
-		int index;
+		public Type type;
+		public string content;
+		public int index;
 	
 	}
 	

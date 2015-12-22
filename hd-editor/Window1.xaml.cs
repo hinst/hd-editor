@@ -1,22 +1,17 @@
 ﻿using NLog;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace hd_editor
 {
 
-	public partial class Window1 : Window
+	partial class Window1 : Window
 	{
 	
-		public Development development = new Development();
-		public CodeDrawer codeDrawer = new CodeDrawer();
+		internal Development development = new Development();
+		internal CodeDrawer codeDrawer = new CodeDrawer();
 		Logger log = LogManager.GetCurrentClassLogger();
 	
 		public Window1()

@@ -8,7 +8,7 @@ using NLog;
 namespace hd_editor
 {
 
-	public class CodeDrawer
+	class CodeDrawer
 	{
 
 		SourceFile sourceFile;

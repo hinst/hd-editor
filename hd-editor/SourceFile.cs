@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace hd_editor
 {
 
-	public class SourceFile
+	class SourceFile
 	{
 	
 		public bool isSourceFile

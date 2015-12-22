@@ -46,7 +46,11 @@ namespace hd_editor
 				}
 				++position;
 			}
-			
+			Token token;
+			token.content = identifierText.ToString();
+			token.type = Token.Type.identifier;
+			// TODO: token.line
+			tokens.Add(token);
 		}
 
 	}

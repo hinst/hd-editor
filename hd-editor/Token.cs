@@ -9,6 +9,7 @@ namespace hd_editor
 	
 		public enum Type
 		{
+			identifier,
 			unit,
 			program,
 			library,

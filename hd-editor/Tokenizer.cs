@@ -5,7 +5,7 @@ using System.Text;
 namespace hd_editor
 {
 
-	class PascalTokenizer
+	class Tokenizer
 	{
 	
 		List<Token> tokens;
@@ -44,7 +44,9 @@ namespace hd_editor
 				{
 					break;
 				}
+				++position;
 			}
+			
 		}
 
 	}

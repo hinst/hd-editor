@@ -32,7 +32,8 @@ namespace hd_editor
 				var currentChar = text[position];
 				if (currentChar == (char)10)
 				{
-				
+					var token = new Token();
+					token.type = Token.Type.lineBreak;
 				}
 				else if (PascalLang.isIdentifierStartChar(currentChar))
 				{

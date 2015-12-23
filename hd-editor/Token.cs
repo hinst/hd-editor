@@ -10,6 +10,7 @@ namespace hd_editor
 		public enum Type
 		{
 			identifier,
+			lineBreak,
 			unit,
 			program,
 			library,

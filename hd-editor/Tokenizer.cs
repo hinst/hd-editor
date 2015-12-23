@@ -30,10 +30,16 @@ namespace hd_editor
 			while (position < text.Length)
 			{
 				var currentChar = text[position];
-				if (currentChar == (char)10)
+				if (currentChar == (char)13)
+				{
+					++position;
+				}
+				else if (currentChar == (char)10)
 				{
 					var token = new Token();
 					token.type = Token.Type.lineBreak;
+					++lineNumber;
+					++position;
 				}
 				else if (PascalLang.isIdentifierStartChar(currentChar))
 				{

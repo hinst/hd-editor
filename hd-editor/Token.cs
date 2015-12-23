@@ -39,7 +39,8 @@ namespace hd_editor
 		
 		public Type type;
 		public string content;
-		public int index;
+		public int position;
+		public int lineNumber;
 	
 	}
 	

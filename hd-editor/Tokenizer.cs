@@ -12,18 +12,29 @@ namespace hd_editor
 		string filePath;
 		string text;
 		int position;
+		int lineNumber;
+		bool subFileMode;
 		
 		public void tokenize()
 		{
 			position = 0;
+			lineNumber = 1;
 			if (tokens == null)
 			{
 				tokens = new List<Token>();
 			}
+			else
+			{
+				subFileMode = true;
+			}
 			while (position < text.Length)
 			{
 				var currentChar = text[position];
-				if (PascalLang.isIdentifierStartChar(currentChar))
+				if (currentChar == (char)10)
+				{
+				
+				}
+				else if (PascalLang.isIdentifierStartChar(currentChar))
 				{
 					grabIdentifier();
 				}
@@ -46,10 +57,16 @@ namespace hd_editor
 				}
 				++position;
 			}
-			Token token;
+			Token token = new Token();
 			token.content = identifierText.ToString();
 			token.type = Token.Type.identifier;
-			// TODO: token.line
+			addToken(token);
+		}
+		
+		void addToken(Token token)
+		{
+			token.position = position;
+			token.lineNumber = lineNumber;
 			tokens.Add(token);
 		}
 

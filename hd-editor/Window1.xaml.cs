@@ -74,6 +74,11 @@ namespace hd_editor
 			codeDrawer.draw();
 		}
 		
+		void CodeCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
+		{
+			codeDrawer.draw();
+		}
+		
 	}
 	
 }

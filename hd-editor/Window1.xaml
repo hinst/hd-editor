@@ -30,7 +30,8 @@
 		<DockPanel Grid.Column="1" Name="centralPanel" >
 			<Canvas Name="codeCanvas" Margin="2" 
 				Background="Transparent"
-				MouseWheel="CodeCanvas_MouseWheel"/>
+				MouseWheel="CodeCanvas_MouseWheel"
+				SizeChanged="CodeCanvas_SizeChanged"/>
 		</DockPanel>
 	</Grid>
 </Window>

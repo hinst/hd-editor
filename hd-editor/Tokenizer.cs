@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace hd_editor
 {
@@ -14,6 +15,11 @@ namespace hd_editor
 		int position;
 		int lineNumber;
 		bool subFileMode;
+		
+		public Tokenizer()
+		{
+			
+		}
 		
 		public void tokenize()
 		{
@@ -66,7 +72,10 @@ namespace hd_editor
 			}
 			Token token = new Token();
 			token.content = identifierText.ToString();
-			token.type = Token.Type.identifier;
+			if (PascalLang.isKeyword(token.content))
+				token.type = Token.Type.keyword;
+			else
+				token.type = Token.Type.identifier;
 			addToken(token);
 		}
 		
@@ -78,5 +87,5 @@ namespace hd_editor
 		}
 
 	}
-	
+
 }

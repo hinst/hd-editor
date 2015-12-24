@@ -10,12 +10,8 @@ namespace hd_editor
 		public enum Type
 		{
 			identifier,
+			keyword,
 			lineBreak,
-			unit,
-			program,
-			library,
-			begin,
-			end,
 			space,
 			openBrace,
 			closeBrace,
@@ -23,10 +19,6 @@ namespace hd_editor
 			dot,
 			colon,
 			semicolon,
-			implementation,
-			interfaceKeyword,
-			ifKeyword,
-			thenKeyword,
 			stringThing,
 			equalsSign,
 			assignSign,
@@ -36,6 +28,7 @@ namespace hd_editor
 			includeFile,
 			define,
 			undefine,
+			unknown,
 		}
 		
 		public Type type;

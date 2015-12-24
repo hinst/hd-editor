@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows;
 using NLog;
+using System.Diagnostics;
 
 namespace hd_editor
 {

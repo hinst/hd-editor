@@ -14,6 +14,7 @@ namespace hd_editor
 		string filePath;
 		public string text;
 		int position;
+		int positionInLine;
 		int lineNumber;
 		bool subFileMode;
 		readonly Logger log;
@@ -26,7 +27,8 @@ namespace hd_editor
 		public void tokenize()
 		{
 			position = 0;
-			lineNumber = 1;
+			positionInLine = 0;
+			lineNumber = 0;
 			if (tokens == null)
 			{
 				tokens = new List<Token>();
@@ -40,14 +42,11 @@ namespace hd_editor
 				var currentChar = text[position];
 				if (currentChar == (char)13)
 				{
-					++position;
+					incPosition();
 				}
 				else if (currentChar == (char)10)
 				{
-					var token = new Token();
-					token.type = Token.Type.lineBreak;
-					++lineNumber;
-					++position;
+					addNewLine();
 				}
 				else if (PascalLang.isIdentifierStartChar(currentChar))
 				{
@@ -55,7 +54,7 @@ namespace hd_editor
 				}
 				else
 				{
-					++position;
+					incPosition();
 				}
 			}
 		}
@@ -90,6 +89,21 @@ namespace hd_editor
 			token.position = position;
 			token.lineNumber = lineNumber;
 			tokens.Add(token);
+		}
+		
+		void incPosition()
+		{
+			++position;
+			++positionInLine;
+		}
+		
+		void addNewLine()
+		{
+			var token = new Token();
+			token.type = Token.Type.lineBreak;
+			++lineNumber;
+			positionInLine = 0;
+			++position;
 		}
 
 	}

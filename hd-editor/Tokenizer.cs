@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using NLog;
 
 namespace hd_editor
 {
@@ -9,16 +10,17 @@ namespace hd_editor
 	class Tokenizer
 	{
 	
-		List<Token> tokens;
+		public List<Token> tokens;
 		string filePath;
-		string text;
+		public string text;
 		int position;
 		int lineNumber;
 		bool subFileMode;
+		readonly Logger log;
 		
 		public Tokenizer()
 		{
-			
+			log = this.getLogger();
 		}
 		
 		public void tokenize()

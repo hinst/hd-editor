@@ -53,6 +53,10 @@ namespace hd_editor
 				{
 					grabIdentifier();
 				}
+				else
+				{
+					++position;
+				}
 			}
 		}
 		

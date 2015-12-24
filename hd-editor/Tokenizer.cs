@@ -62,6 +62,7 @@ namespace hd_editor
 		void grabIdentifier()
 		{
 			var identifierText = new StringBuilder();
+			var token = createToken();
 			while (position < text.Length)
 			{
 				var currentChar = text[position];
@@ -75,20 +76,21 @@ namespace hd_editor
 				}
 				++position;
 			}
-			Token token = new Token();
 			token.content = identifierText.ToString();
 			if (PascalLang.isKeyword(token.content))
 				token.type = Token.Type.keyword;
 			else
 				token.type = Token.Type.identifier;
-			addToken(token);
+			tokens.Add(token);
 		}
 		
-		void addToken(Token token)
+		Token createToken()
 		{
+			var token = new Token();
 			token.position = position;
 			token.lineNumber = lineNumber;
-			tokens.Add(token);
+			token.positionInLine = positionInLine;
+			return token;
 		}
 		
 		void incPosition()
@@ -99,11 +101,12 @@ namespace hd_editor
 		
 		void addNewLine()
 		{
-			var token = new Token();
+			var token = createToken();
 			token.type = Token.Type.lineBreak;
+			incPosition();
+			tokens.Add(token);
 			++lineNumber;
 			positionInLine = 0;
-			++position;
 		}
 
 	}

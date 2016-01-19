@@ -7,7 +7,6 @@ namespace hd_editor
 	{
 	
 		public Token[] tokens;
-		public List<string> lines;
 		int tokenIndex;
 
 		public CodeStyler()
@@ -27,6 +26,36 @@ namespace hd_editor
 				{
 					break;
 				}
+			}
+		}
+		
+		public StyledText getFragment(int lineIndex, int characterIndex)
+		{
+			
+		}
+		
+		void shiftForward(int lineIndex, int characterIndex)
+		{
+			while (hasNextToken)
+			{
+				var nextToken = tokens[tokenIndex + 1];
+				if (nextToken.lineNumber <= lineIndex 
+					&& nextToken.characterIndexInLine <= characterIndex)
+				{
+					++tokenIndex;
+				}
+				else
+				{
+					break;
+				}
+			}
+		}
+		
+		bool hasNextToken
+		{
+			get
+			{
+				return tokenIndex < tokens.Length - 1;
 			}
 		}
 		

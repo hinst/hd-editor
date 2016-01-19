@@ -89,6 +89,7 @@
     <Compile Include="CodeStyler.cs" />
     <Compile Include="LogAttacher.cs" />
     <Compile Include="PascalLang.cs" />
+    <Compile Include="StyledText.cs" />
     <Compile Include="Tokenizer.cs" />
     <Compile Include="TokenStyle.cs" />
     <Compile Include="CodeDrawer.cs">

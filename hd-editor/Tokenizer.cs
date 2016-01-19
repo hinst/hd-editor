@@ -87,9 +87,9 @@ namespace hd_editor
 		Token createToken()
 		{
 			var token = new Token();
-			token.position = position;
+			token.characterIndexInDocument = position;
 			token.lineNumber = lineNumber;
-			token.positionInLine = positionInLine;
+			token.characterIndexInLine = positionInLine;
 			return token;
 		}
 		

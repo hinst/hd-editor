@@ -98,7 +98,6 @@ namespace hd_editor
 					scrollY = sourceFile.lines.Count;
 				}
 			}
-			log.Debug("scrollY=" + scrollY);
 		}
 		
 		public void changeSourceFile(SourceFile sourceFile)

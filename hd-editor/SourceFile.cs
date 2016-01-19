@@ -61,7 +61,7 @@ namespace hd_editor
 			tokenizer.text = text;
 			tokenizer.tokenize();
 			var tokens = tokenizer.tokens.ToArray();
-			log.Debug("loadTokens: tokens.Length = " + tokens.Length);
+			log.Debug("loadTokens: tokens.Length=" + tokens.Length);
 			return tokens;
 		}
 		

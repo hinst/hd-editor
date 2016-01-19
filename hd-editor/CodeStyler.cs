@@ -19,7 +19,14 @@ namespace hd_editor
 			tokenIndex = 0;
 			for (var i = 0; i < tokens.Length; ++i)
 			{
-				
+				if (tokens[i].lineNumber < topLineIndex)
+				{
+					tokenIndex = i;
+				}
+				else
+				{
+					break;
+				}
 			}
 		}
 		

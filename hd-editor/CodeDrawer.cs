@@ -20,7 +20,8 @@ namespace hd_editor
 		public int scrollX;
 		public int scrollY;
 		public Canvas canvas;
-		public static FontFamily codeFont = new FontFamily(new Uri("pack://application:,,,/"), "./#Ubuntu Mono");		
+		public static FontFamily codeFont = 
+			new FontFamily(new Uri("pack://application:,,,/"), "./#Ubuntu Mono");		
 		Logger log = LogManager.GetCurrentClassLogger();
 	
 		public void prepare()
@@ -31,7 +32,9 @@ namespace hd_editor
 			textBlock.Arrange(new Rect(textBlock.DesiredSize));
 			characterWidth = (int)textBlock.ActualWidth;
 			characterHeight = (int)textBlock.ActualHeight;
-			log.Debug("characterWidth=" + characterWidth + " characterHeight=" + characterHeight + " haveFont=" + (codeFont != null));
+			log.Debug("characterWidth=" + characterWidth 
+				+ " characterHeight=" + characterHeight 
+				+ " haveFont=" + (codeFont != null));
 			debugPrintAvailableFonts();
 		}
 		

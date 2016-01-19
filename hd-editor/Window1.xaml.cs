@@ -71,7 +71,6 @@ namespace hd_editor
 		void CodeCanvas_MouseWheel(object sender, MouseWheelEventArgs e)
 		{
 			codeDrawer.scrollByPixels(e.Delta);
-			codeDrawer.draw();
 		}
 		
 		void CodeCanvas_SizeChanged(object sender, SizeChangedEventArgs e)

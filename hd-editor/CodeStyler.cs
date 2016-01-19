@@ -14,7 +14,7 @@ namespace hd_editor
 		{
 		}
 		
-		public void prepare(int topLineIndex)
+		public void scrollTo(int topLineIndex)
 		{
 			tokenIndex = 0;
 			for (var i = 0; i < tokens.Length; ++i)

@@ -23,6 +23,7 @@ namespace hd_editor
 		public static FontFamily codeFont = 
 			new FontFamily(new Uri("pack://application:,,,/"), "./#Ubuntu Mono");		
 		Logger log = LogManager.GetCurrentClassLogger();
+		public CodeStyler codeStyler = new CodeStyler();
 	
 		public void prepare()
 		{
@@ -36,6 +37,7 @@ namespace hd_editor
 				+ " characterHeight=" + characterHeight 
 				+ " haveFont=" + (codeFont != null));
 			debugPrintAvailableFonts();
+			updateCodeStyler();
 		}
 		
 		public void debugPrintAvailableFonts()
@@ -101,11 +103,19 @@ namespace hd_editor
 					scrollY = sourceFile.lines.Count;
 				}
 			}
+			updateCodeStyler();
+			draw();
 		}
 		
 		public void changeSourceFile(SourceFile sourceFile)
 		{
 			this.sourceFile = sourceFile;
+		}
+		
+		void updateCodeStyler()
+		{
+			codeStyler.tokens = sourceFile.tokens;
+			codeStyler.scrollTo(scrollY);
 		}
 		
 	}

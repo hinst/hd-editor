@@ -8,9 +8,11 @@ namespace hd_editor
 	
 		public Token[] tokens;
 		int tokenIndex;
+		CodeHighlightingScheme scheme;
 
 		public CodeStyler()
 		{
+			scheme = CodeHighlightingScheme.defaultScheme;
 		}
 		
 		public void scrollTo(int topLineIndex)
@@ -29,9 +31,16 @@ namespace hd_editor
 			}
 		}
 		
-		public StyledText getFragment(int lineIndex, int characterIndex)
+		public TextStyle getTextStyle(int lineIndex, int characterIndex)
 		{
-			
+			shiftForward(lineIndex, characterIndex);
+			var textStyle = new TextStyle();
+			if (0 <= tokenIndex && tokenIndex < tokens.Length) 
+			{
+				var token = tokens[tokenIndex];
+				textStyle = scheme.getStyle(token.type);
+			}
+			return textStyle;
 		}
 		
 		void shiftForward(int lineIndex, int characterIndex)

@@ -2,10 +2,10 @@
 
 namespace hd_editor
 {
-	struct StyledText
+
+	struct TextStyle
 	{
 	
-		public string text;
 		public Color textColor;
 		public bool bold;
 	

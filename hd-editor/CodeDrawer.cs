@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows;
 using NLog;
@@ -24,6 +25,8 @@ namespace hd_editor
 			new FontFamily(new Uri("pack://application:,,,/"), "./#Ubuntu Mono");		
 		Logger log = LogManager.GetCurrentClassLogger();
 		public CodeStyler codeStyler = new CodeStyler();
+		TextStyle currentTextStyle;
+		string currentStyledText;
 	
 		public void prepare()
 		{
@@ -37,7 +40,6 @@ namespace hd_editor
 				+ " characterHeight=" + characterHeight 
 				+ " haveFont=" + (codeFont != null));
 			debugPrintAvailableFonts();
-			updateCodeStyler();
 		}
 		
 		public void debugPrintAvailableFonts()
@@ -53,6 +55,7 @@ namespace hd_editor
 		public void draw()
 		{
 			canvas.Children.Clear();
+			currentTextStyle = new TextStyle();
 			if (sourceFile != null)
 			{
 				var lineIndex = scrollY;
@@ -72,12 +75,35 @@ namespace hd_editor
 		{
 			var textBlock = createTextBlock();
 			var text = sourceFile.lines[lineIndex];
+			currentStyledText = "";
 			if (scrollX > 0)
 			{
-				text = text.Substring(scrollX);
+				for (var i = 0; i < text.Length; ++i)
+				{
+					if (i >= scrollX)
+					{
+						drawCharacter(lineIndex, i, textBlock);
+					}
+				}
 			}
-			textBlock.Text = text;
 			return textBlock;
+		}
+		
+		void drawCharacter(int lineIndex, int characterIndex, TextBlock textBlock)
+		{
+			var textStyle = codeStyler.getTextStyle(lineIndex, characterIndex);
+			var character = sourceFile.lines[lineIndex][characterIndex];
+			if (currentStyledText.Length > 0 && !textStyle.equals(currentTextStyle))
+			{
+				var run = new Run(currentStyledText);
+				if (textStyle.bold)
+				{
+					run.FontWeight = FontWeights.Bold;
+				}
+				textBlock.Inlines.Add(run);
+				currentStyledText = "";
+			}
+			currentStyledText += character;
 		}
 		
 		TextBlock createTextBlock()
@@ -110,6 +136,7 @@ namespace hd_editor
 		public void changeSourceFile(SourceFile sourceFile)
 		{
 			this.sourceFile = sourceFile;
+			updateCodeStyler();
 		}
 		
 		void updateCodeStyler()

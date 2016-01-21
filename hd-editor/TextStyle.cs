@@ -8,6 +8,12 @@ namespace hd_editor
 	
 		public Color textColor;
 		public bool bold;
+		
+		public bool equals(TextStyle textStyle)
+		{
+			return textColor.Equals(textStyle.textColor)
+				&& bold == textStyle.bold;
+		}
 	
 	}
 	

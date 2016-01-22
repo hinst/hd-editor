@@ -14,6 +14,11 @@ namespace hd_editor
 			return textColor.Equals(textStyle.textColor)
 				&& bold == textStyle.bold;
 		}
+		
+		public string toString()
+		{
+			return "color=" + textColor + " bold=" + bold;
+		}
 	
 	}
 	

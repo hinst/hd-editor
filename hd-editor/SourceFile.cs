@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using NLog;
+using System.Linq;
 
 namespace hd_editor
 {
@@ -33,6 +34,7 @@ namespace hd_editor
 			var content = File.ReadAllText(path, Encoding.UTF8);
 			lines = loadLines(content);
 			tokens = loadTokens(content);
+			saveTokensText();
 		}
 		
 		List<string> loadLines(string text)
@@ -63,6 +65,12 @@ namespace hd_editor
 			var tokens = tokenizer.tokens.ToArray();
 			log.Debug("loadTokens: tokens.Length=" + tokens.Length);
 			return tokens;
+		}
+		
+		public void saveTokensText()
+		{
+			var text = String.Join("\r\n", tokens.Select(token => token.toString()));
+			File.WriteAllText(path + ".tokens", text);
 		}
 		
 	}

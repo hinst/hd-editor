@@ -1,7 +1,4 @@
-﻿
-using System;
-
-namespace hd_editor
+﻿namespace hd_editor
 {
 
 	struct Token
@@ -36,6 +33,12 @@ namespace hd_editor
 		public int characterIndexInDocument;
 		public int characterIndexInLine;
 		public int lineNumber;
+		
+		public string toString()
+		{
+			return "" + characterIndexInDocument + ":" + lineNumber + ":" + characterIndexInLine 
+				+ " " + type + " '" + content + "'";
+		}
 	
 	}
 	

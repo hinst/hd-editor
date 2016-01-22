@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Diagnostics;
+using NLog;
 
 namespace hd_editor
 {
@@ -9,10 +10,12 @@ namespace hd_editor
 		public Token[] tokens;
 		int tokenIndex;
 		CodeHighlightingScheme scheme;
+		Logger log;
 
 		public CodeStyler()
 		{
 			scheme = CodeHighlightingScheme.defaultScheme;
+			log = this.getLogger();
 		}
 		
 		public void scrollTo(int topLineIndex)
@@ -29,6 +32,7 @@ namespace hd_editor
 					break;
 				}
 			}
+			log.Debug("scrollTo: " + topLineIndex + " -> " + tokenIndex);
 		}
 		
 		public TextStyle getTextStyle(int lineIndex, int characterIndex)
@@ -40,6 +44,9 @@ namespace hd_editor
 				var token = tokens[tokenIndex];
 				textStyle = scheme.getStyle(token.type);
 			}
+			log.Debug("" + lineIndex + ":" + characterIndex 
+				+ " [" + tokenIndex + "] " 
+				+ textStyle.toString());
 			return textStyle;
 		}
 		

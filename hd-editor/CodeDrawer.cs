@@ -76,6 +76,7 @@ namespace hd_editor
 			var textBlock = createTextBlock();
 			var lineLength = sourceFile.lines[lineIndex].Length;
 			currentStyledText = "";
+			currentTextStyle = new TextStyle();
 			for (var i = 0; i < lineLength; ++i)
 			{
 				if (i >= scrollX)

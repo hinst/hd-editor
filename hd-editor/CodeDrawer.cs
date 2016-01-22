@@ -74,18 +74,16 @@ namespace hd_editor
 		TextBlock drawLine(int lineIndex)
 		{
 			var textBlock = createTextBlock();
-			var text = sourceFile.lines[lineIndex];
+			var lineLength = sourceFile.lines[lineIndex].Length;
 			currentStyledText = "";
-			if (scrollX > 0)
+			for (var i = 0; i < lineLength; ++i)
 			{
-				for (var i = 0; i < text.Length; ++i)
+				if (i >= scrollX)
 				{
-					if (i >= scrollX)
-					{
-						drawCharacter(lineIndex, i, textBlock);
-					}
+					drawCharacter(lineIndex, i, textBlock);
 				}
 			}
+			drawCharacterFlush(textBlock);
 			return textBlock;
 		}
 		
@@ -93,17 +91,26 @@ namespace hd_editor
 		{
 			var textStyle = codeStyler.getTextStyle(lineIndex, characterIndex);
 			var character = sourceFile.lines[lineIndex][characterIndex];
-			if (currentStyledText.Length > 0 && !textStyle.equals(currentTextStyle))
+			if (false == textStyle.equals(currentTextStyle))
+			{
+				drawCharacterFlush(textBlock);
+				currentTextStyle = textStyle;
+			}
+			currentStyledText += character;
+		}
+		
+		void drawCharacterFlush(TextBlock textBlock)
+		{
+			if (currentStyledText.Length > 0)
 			{
 				var run = new Run(currentStyledText);
-				if (textStyle.bold)
+				if (currentTextStyle.bold)
 				{
 					run.FontWeight = FontWeights.Bold;
 				}
 				textBlock.Inlines.Add(run);
 				currentStyledText = "";
 			}
-			currentStyledText += character;
 		}
 		
 		TextBlock createTextBlock()

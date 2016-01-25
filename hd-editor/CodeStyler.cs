@@ -44,19 +44,18 @@ namespace hd_editor
 				var token = tokens[tokenIndex];
 				textStyle = scheme.getStyle(token.type);
 			}
-			log.Debug("" + lineIndex + ":" + characterIndex 
-				+ " [" + tokenIndex + "] " 
-				+ textStyle.toString());
 			return textStyle;
 		}
 		
 		void shiftForward(int lineIndex, int characterIndex)
 		{
-			while (hasNextToken)
+			while (tokenIndex < tokens.Length - 1)
 			{
 				var nextToken = tokens[tokenIndex + 1];
-				if (nextToken.lineNumber <= lineIndex 
-					&& nextToken.characterIndexInLine <= characterIndex)
+				var closer = nextToken.lineNumber < lineIndex 
+					|| nextToken.lineNumber == lineIndex 
+						&& nextToken.characterIndexInLine <= characterIndex;
+				if (closer)
 				{
 					++tokenIndex;
 				}
@@ -64,14 +63,6 @@ namespace hd_editor
 				{
 					break;
 				}
-			}
-		}
-		
-		bool hasNextToken
-		{
-			get
-			{
-				return tokenIndex < tokens.Length - 1;
 			}
 		}
 		

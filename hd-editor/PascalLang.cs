@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using NLog.Filters;
 
 namespace hd_editor
 {
@@ -13,10 +12,15 @@ namespace hd_editor
 		public const string lettersNumbers = letters + numbers;
 		public static readonly string[] keywords = 
 		{
-			"begin", "end", "var",
-			"if", "then", "else",
+			"begin", "end", "initialization", "finalization",
+			"var", "const",
+			"if", "then", "else", "case",
 			"program", "unit", "library",
-			"interface", "implementation"
+			"interface", "implementation", "uses",
+			"function", "procedure",
+			"try", "except", "finally",
+			"type", "class", "record", "object", "interface",
+			"private", "protected", "public", "published",
 		};
 			
 		public static bool isIdentifierChar(char c)

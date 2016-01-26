@@ -74,7 +74,7 @@ namespace hd_editor
 				{
 					break;
 				}
-				++position;
+				incPosition();
 			}
 			token.content = identifierText.ToString();
 			if (PascalLang.isKeyword(token.content))

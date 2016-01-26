@@ -21,17 +21,18 @@ namespace hd_editor
 		public void scrollTo(int topLineIndex)
 		{
 			tokenIndex = 0;
-			for (var i = 0; i < tokens.Length; ++i)
-			{
-				if (tokens[i].lineNumber < topLineIndex)
+			if (tokens != null)
+				for (var i = 0; i < tokens.Length; ++i)
 				{
-					tokenIndex = i;
+					if (tokens[i].lineNumber < topLineIndex)
+					{
+						tokenIndex = i;
+					}
+					else
+					{
+						break;
+					}
 				}
-				else
-				{
-					break;
-				}
-			}
 			log.Debug("scrollTo: " + topLineIndex + " -> " + tokenIndex);
 		}
 		

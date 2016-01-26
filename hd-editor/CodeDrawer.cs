@@ -54,6 +54,7 @@ namespace hd_editor
 		
 		public void draw()
 		{
+			codeStyler.scrollTo(scrollY);
 			canvas.Children.Clear();
 			currentTextStyle = new TextStyle();
 			if (sourceFile != null)
@@ -94,6 +95,7 @@ namespace hd_editor
 			var character = sourceFile.lines[lineIndex][characterIndex];
 			if (false == textStyle.equals(currentTextStyle))
 			{
+				//log.Debug("text style changed at " + lineIndex + ":" + characterIndex);
 				drawCharacterFlush(textBlock);
 				currentTextStyle = textStyle;
 			}
@@ -150,7 +152,6 @@ namespace hd_editor
 		void updateCodeStyler()
 		{
 			codeStyler.tokens = sourceFile.tokens;
-			codeStyler.scrollTo(scrollY);
 		}
 		
 	}
